@@ -19,8 +19,7 @@ export default async function handler(
     sessionToken = resp.session.stytch_session.session_token;
   } catch (error) {
     console.log(error);
-    const errorString = JSON.stringify(error);
-    return res.status(400).json({ errorString });
+    res.status(400).json({});
   }
 
   setCookie(SESSION_COOKIE, sessionToken, {
@@ -30,5 +29,5 @@ export default async function handler(
     secure: true,
   });
 
-  return res.redirect("/");
+  res.redirect("/");
 }
